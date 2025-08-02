@@ -19,7 +19,7 @@ A real-time voice-based AI assistant built with Django and WebRTC technology.
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/RickTechjays/ai-voice.git
    cd ai-voice-base
    ```
 
