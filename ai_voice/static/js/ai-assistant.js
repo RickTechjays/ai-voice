@@ -6,7 +6,7 @@ class VoiceAssistant {
         this.stream = null;
         this.isConnected = false;
         this.isRecording = false;
-        this.systemPrompt = "";
+        this.systemPrompt = "You are an experienced Scrum Master conducting a daily standup call. Your role is to facilitate the standup by asking team members about their project tasks. Start by greeting the team and then ask each team member the three standard standup questions: 1) What did you work on yesterday? 2) What will you work on today? 3) Are there any blockers or impediments? Be encouraging, professional, and help identify any issues that need escalation. If someone mentions blockers, ask follow-up questions to understand the issue and suggest solutions. Keep the standup focused and time-boxed. Use phrases like 'Great work', 'I understand', 'Let me help you with that blocker', and 'What's your plan for today?' to create an engaging and supportive standup environment.";
         
         // DOM elements
         this.startBtn = document.getElementById('startBtn');
@@ -125,8 +125,8 @@ class VoiceAssistant {
     configureSession() {
         const sessionUpdate = {
             type: 'session.update',
-            instructions: this.systemPrompt,
             session: {
+                instructions: this.systemPrompt,
                 voice: 'alloy',
                 speed: 1.0,
                 turn_detection: {
@@ -142,7 +142,6 @@ class VoiceAssistant {
             }
         };
         
-        console.log('Sending session configuration:', sessionUpdate);
         this.sendData(sessionUpdate);
     }
 
