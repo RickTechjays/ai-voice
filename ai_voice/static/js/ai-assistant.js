@@ -6,8 +6,7 @@ class VoiceAssistant {
         this.stream = null;
         this.isConnected = false;
         this.isRecording = false;
-        
-
+        this.systemPrompt = "";
         
         // DOM elements
         this.startBtn = document.getElementById('startBtn');
@@ -126,6 +125,7 @@ class VoiceAssistant {
     configureSession() {
         const sessionUpdate = {
             type: 'session.update',
+            instructions: this.systemPrompt,
             session: {
                 voice: 'alloy',
                 speed: 1.0,
