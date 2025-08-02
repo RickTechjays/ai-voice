@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Voice Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        danger: '#EF4444'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">AI Voice Assistant</h1>
+            <p class="text-gray-600">Real-time conversation with AI using WebRTC</p>
+        </div>
+
+        <!-- Connection Status -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-semibold text-gray-800">Connection Status</h2>
+                <div id="connectionStatus" class="px-3 py-1 rounded-full text-sm font-medium bg-gray-200 text-gray-700">
+                    Disconnected
+                </div>
+            </div>
+            
+            <!-- Control Buttons -->
+            <div class="flex gap-4">
+                <button id="startBtn" class="bg-primary hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Start Conversation
+                </button>
+                
+                <button id="stopBtn" class="bg-danger hover:bg-red-600 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                    Stop Conversation
+                </button>
+            </div>
+        </div>
+
+        <!-- Conversation Display -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Conversation</h2>
+            
+            <!-- Conversation Area -->
+            <div id="conversationArea" class="bg-gray-50 rounded-lg p-4 h-96 overflow-y-auto mb-4 border">
+                <div class="text-gray-500 text-center py-8">
+                    Click "Start Conversation" to begin chatting with the AI assistant.
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Status Messages -->
+        <div id="statusMessage" class="mt-4 p-4 rounded-lg hidden"></div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white rounded-lg p-6 flex items-center gap-4">
+            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+            <span class="text-gray-700">Connecting to AI assistant...</span>
+        </div>
+    </div>
+
+    <script src="{% static 'js/ai-assistant.js' %}"></script>
+</body>
+</html>
